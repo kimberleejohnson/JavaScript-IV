@@ -25,7 +25,6 @@ class Instructor extends Person {
         this.catchPhrase = instructorAttributes.catchPhrase; 
     }
     // Methods 
-    // Demo
     demo(subject){
         return `Today we are learning about ${subject}.`;
     }
@@ -33,6 +32,23 @@ class Instructor extends Person {
         return `${student.name} receives a perfect score on ${subject}.`
     }
 } // Instructor 
+
+// ProjectManager, extension of Instructor 
+class ProjectManager extends Instructor {
+    constructor(PMAttributes) {
+        super(PMAttributes); 
+        this.gradClassName = PMAttributes.gradClassName;
+        this.favInstructor = PMAttributes.favInstructor; 
+    }
+    // Methods 
+    standup(channel){
+        return `${this.name} announces to ${channel} @channel standy times!`
+    }
+
+    debugsCode(student, subject){
+        return `${this.name} debugs ${student.name}'s code on ${subject}.`
+    }
+} // ProjectManager 
 
 // Student, extension of Person 
 class Student extends Person {
@@ -43,7 +59,6 @@ class Student extends Person {
         this.favSubjects= studentAttributes.favSubjects; 
     }
     // Methods 
-    
     listsubjects(){
         return `${this.favSubjects}`;
     }
@@ -61,7 +76,6 @@ class Student extends Person {
 // LAMBDA DATABASE 
 
 // Instructors 
-
 const instructor1 = new Instructor ({
     name: "Josh", 
     age: 32,
@@ -93,6 +107,28 @@ const student1 = new Student ({
     favSubjects: ["HTML", "CSS", "JavaScript"] 
 }); 
 
+const student2 = new Student ({
+    name: "Cori", 
+    age: 32,
+    location: "Virginia", 
+    gender: "F", 
+    previousBackground: "Bartending",
+    className: "Web19", 
+    favSubjects: ["HTML", "CSS", "JavaScript"] 
+}); 
+
+// ProjectManagers 
+const projectManager1 = new ProjectManager ({
+    name: "Sam", 
+    age: 30,
+    location: "Central Time", 
+    gender: "M", 
+    specialty: "back-end", 
+    favLanguage: "Python",
+    catchPhrase: "I love my dogs!",
+    gradClassName: "Web16",
+    favInstructor: "Josh"
+}); 
 
 // Logging some database information to the console 
 console.log(instructor1); 
@@ -104,6 +140,9 @@ console.log(student1.listsubjects());
 console.log(student1.sprintChallenge("JavaScript")); 
 console.log(student1.PRAssignment("JavaScript")); 
 console.log(instructor1.grade(student1, "JavaScript")); 
+console.log(projectManager1.speak()); 
+console.log(projectManager1.standup("Sam-PM-group")); 
+console.log(projectManager1.debugsCode(student1, "JavaScript")); 
 
 
 // Deprecated tests 

@@ -37,8 +37,6 @@ class Instructor extends Person {
         student.grade = addedPoints + student.grade; 
         return `${student.name}'s new grade is ${student.grade}.`
     }
-
-
 } // Instructor 
 
 // ProjectManager, extension of Instructor 
@@ -65,7 +63,7 @@ class Student extends Person {
         this.previousBackground = studentAttributes.previousBackground; 
         this.className = studentAttributes.className; 
         this.favSubjects= studentAttributes.favSubjects; 
-        this.grade = 99; 
+        this.grade = studentAttributes.grade; 
     }
     // Methods 
     listsubjects(){
@@ -79,6 +77,14 @@ class Student extends Person {
     sprintChallenge(subject){
         return `${this.name} has begun a Sprint Challenge for ${subject}.`;
         } 
+
+    graduate(){
+        if (this.grade >= 70) {
+            return `Congratulations! ${this.name} is ready to graduate Lambda School.`
+         } else {
+             return `Unfortunately, ${this.name} is not ready to graduate Lambda School. Please ask your instructors to review your work again.`
+        }
+     }
 } // Student
 
 
@@ -113,7 +119,8 @@ const student1 = new Student ({
     gender: "F", 
     previousBackground: "Public Relations",
     className: "Web19", 
-    favSubjects: ["HTML", "CSS", "JavaScript"] 
+    favSubjects: ["HTML", "CSS", "JavaScript"], 
+    grade: 92 
 }); 
 
 const student2 = new Student ({
@@ -123,7 +130,19 @@ const student2 = new Student ({
     gender: "F", 
     previousBackground: "Bartending",
     className: "Web19", 
-    favSubjects: ["HTML", "CSS", "JavaScript"] 
+    favSubjects: ["HTML", "CSS", "JavaScript"], 
+    grade: 99
+}); 
+
+const student3 = new Student ({
+    name: "Rude Student", 
+    age: 32,
+    location: "Internet", 
+    gender: "M", 
+    previousBackground: "Ivy League",
+    className: "Web19", 
+    favSubjects: ["HTML", "CSS", "JavaScript"], 
+    grade: 10
 }); 
 
 // ProjectManagers 
@@ -168,6 +187,9 @@ console.log(instructor1.noTimeToGrade(student1));
 console.log(instructor1.noTimeToGrade(student1)); 
 console.log(instructor2.noTimeToGrade(student2)); 
 console.log(projectManager1.noTimeToGrade(student1)); 
+console.log(student1.graduate()); 
+console.log(student2.graduate()); 
+console.log(student3.graduate()); 
 
 // Deprecated tests 
 // Testing Person class

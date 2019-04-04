@@ -31,6 +31,14 @@ class Instructor extends Person {
     grade(student, subject){
         return `${student.name} receives a perfect score on ${subject}.`
     }
+
+    noTimeToGrade(student){
+        let addedPoints = Math.random(); 
+        student.grade = addedPoints + student.grade; 
+        return `${student.name}'s new grade is ${student.grade}.`
+    }
+
+
 } // Instructor 
 
 // ProjectManager, extension of Instructor 
@@ -131,6 +139,18 @@ const projectManager1 = new ProjectManager ({
     favInstructor: "Josh"
 }); 
 
+const projectManager2 = new ProjectManager ({
+    name: "Byron", 
+    age: 30,
+    location: "Central Time", 
+    gender: "M", 
+    specialty: "back-end", 
+    favLanguage: "Python",
+    catchPhrase: "Thank you!",
+    gradClassName: "Web16",
+    favInstructor: "Josh"
+}); 
+
 // Logging some database information to the console 
 console.log(instructor1); 
 console.log(instructor1.demo("JavaScript")); 
@@ -144,7 +164,10 @@ console.log(instructor1.grade(student1, "JavaScript"));
 console.log(projectManager1.speak()); 
 console.log(projectManager1.standup("Sam-PM-group")); 
 console.log(projectManager1.debugsCode(student1, "JavaScript")); 
-
+console.log(instructor1.noTimeToGrade(student1)); 
+console.log(instructor1.noTimeToGrade(student1)); 
+console.log(instructor2.noTimeToGrade(student2)); 
+console.log(projectManager1.noTimeToGrade(student1)); 
 
 // Deprecated tests 
 // Testing Person class

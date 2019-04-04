@@ -33,7 +33,7 @@ class Instructor extends Person {
     }
 
     noTimeToGrade(student){
-        let addedPoints = Math.random(); 
+        let addedPoints = (Math.random()*50) - 21; 
         student.grade = addedPoints + student.grade; 
         return `${student.name}'s new grade is ${student.grade}.`
     }
@@ -190,6 +190,8 @@ console.log(projectManager1.noTimeToGrade(student1));
 console.log(student1.graduate()); 
 console.log(student2.graduate()); 
 console.log(student3.graduate()); 
+console.log(student3.graduate()); 
+console.log(instructor2.noTimeToGrade(student2)); 
 
 // Deprecated tests 
 // Testing Person class
